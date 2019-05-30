@@ -1,0 +1,61 @@
+0040117d         mov        ecx, dword [esp+arg_0]                              ; CODE XREF=sub_401434+5261, sub_404b78+783
+00401181         mov        eax, dword [0x424768]                               ; 0x424768
+00401186         mov        edx, ecx
+00401188         push       ebx
+00401189         imul       edx, edx, 0x418
+0040118f         push       esi
+00401190         push       edi
+00401191         mov        edx, dword [edx+eax+8]
+00401195         test       dl, 0x2
+00401198         je         loc_4011e9
+
+0040119a         lea        esi, dword [ecx+1]
+0040119d         xor        edi, edi
+0040119f         cmp        esi, dword [0x42476c]                               ; 0x42476c
+004011a5         jae        loc_4011e9
+
+004011a7         mov        ecx, esi
+004011a9         imul       ecx, ecx, 0x418
+004011af         lea        eax, dword [ecx+eax+8]
+
+             loc_4011b3:
+004011b3         mov        ecx, dword [eax]                                    ; CODE XREF=sub_40117d+106
+004011b5         test       cl, 0x2
+004011b8         je         loc_4011bd
+
+004011ba         inc        edi
+004011bb         jmp        loc_4011db
+
+             loc_4011bd:
+004011bd         test       cl, 0x4                                             ; CODE XREF=sub_40117d+59
+004011c0         je         loc_4011cb
+
+004011c2         mov        ecx, edi
+004011c4         dec        edi
+004011c5         test       ecx, ecx
+004011c7         je         loc_4011e9
+
+004011c9         jmp        loc_4011db
+
+             loc_4011cb:
+004011cb         test       cl, 0x10                                            ; CODE XREF=sub_40117d+67
+004011ce         jne        loc_4011db
+
+004011d0         mov        ebx, ecx
+004011d2         xor        ebx, edx
+004011d4         and        ebx, 0x1
+004011d7         xor        ebx, ecx
+004011d9         mov        dword [eax], ebx
+
+             loc_4011db:
+004011db         inc        esi                                                 ; CODE XREF=sub_40117d+62, sub_40117d+76, sub_40117d+81
+004011dc         add        eax, 0x418
+004011e1         cmp        esi, dword [0x42476c]                               ; 0x42476c
+004011e7         jb         loc_4011b3
+
+             loc_4011e9:
+004011e9         pop        edi                                                 ; CODE XREF=sub_40117d+27, sub_40117d+40, sub_40117d+74
+004011ea         pop        esi
+004011eb         pop        ebx
+004011ec         ret        0x4
+                        ; endp
